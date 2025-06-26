@@ -49,6 +49,7 @@ class ReportController extends Controller
             'ShopInformation.CustomerReputation',
             'ShopInformation.Latitude',
             'ShopInformation.Longitude',
+            'ShopInformation.ShopAddress',
             'ShopInformation.PaymentBehaviour',
             'ShopInformation.ModeOfPayment',
             'ShopInformation.YearlyPurchasePotential',
@@ -58,6 +59,7 @@ class ReportController extends Controller
             'ShopInformation.RepresentativePhoto',
             'ShopInformation.BalancePerCustomer',
             'ShopInformation.ApproveStatus',
+            'ShopInformation.EntryDate',
             'Business.BusinessName',
         )
             ->join('Users', 'Users.UserID', '=', 'ShopInformation.AssignVROStaffId')

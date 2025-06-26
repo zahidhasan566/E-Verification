@@ -11,6 +11,7 @@ use App\Models\CompetitorShopBusiness;
 use App\Models\ShopInformation;
 use App\Services\ImageBase64Service;
 use Carbon\Carbon;
+use Faker\Provider\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -76,6 +77,17 @@ class VROController extends Controller
                 && !empty($singleShopInfo['RepresentativeComment'])
             ){
 
+                if(!empty($singleShopInfo['CustomerCode'])){
+                   $checkExisting =  ShopInformation::where('CustomerCode', $singleShopInfo['CustomerCode'])->first();
+                   if($checkExisting->CustomerCode == $singleShopInfo['CustomerCode']){
+                       return response()->json([
+                          'status' => 'error',
+                          'message' => 'Customer code already exist!',
+                       ]);
+                   }
+
+                }
+
                 if(!empty($singleShopInfo['ShopId'])){
                     $updateShopInfo  = $this->updateExistingShop($singleShopInfo);
                     return $updateShopInfo;
@@ -83,7 +95,7 @@ class VROController extends Controller
                 }
                 else{
                     DB::beginTransaction();
-                    //BussinessWiseCustomerInformation
+                    //BussinessWise Customer Information
                     $db = BusinessConnection::getConnectionName($singleShopInfo['Business']);
                     $customerCode = ($singleShopInfo['CustomerCode']);
                     $results = DB::connection($db)->select("select * from Customer where CustomerCode = '$customerCode' AND Active='Y'");

@@ -59,7 +59,9 @@ class ReportController extends Controller
             'ShopInformation.RepresentativePhoto',
             'ShopInformation.BalancePerCustomer',
             'ShopInformation.ApproveStatus',
+            'ShopInformation.EntryDate',
             'Business.BusinessName',
+            'ShopInformation.RepresentativeComment',
         )
             ->join('Users', 'Users.UserID', '=', 'ShopInformation.AssignVROStaffId')
             ->join('Business', 'Business.Business', '=', 'ShopInformation.Business')

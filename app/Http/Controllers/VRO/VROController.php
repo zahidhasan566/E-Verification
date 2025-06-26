@@ -387,7 +387,6 @@ class VROController extends Controller
             }
             }
     }
-
     public function getVroAssignList(){
         $vroCustomerList = AssignedVro::select('CustomerCode','AssignedVro.Business','Business.BusinessName')
             ->join('Business', 'Business.Business', '=', 'AssignedVro.Business')

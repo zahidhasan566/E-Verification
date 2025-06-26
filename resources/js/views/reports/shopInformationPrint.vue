@@ -22,11 +22,17 @@
                                 <td>{{shopInfo.ProprietorName}}</td>
                             </tr>
                             <tr>
-                                <td rowspan="2">Person Contacted</td>
+                                <td rowspan="4">Person Contacted</td>
                                 <td>Name: {{shopInfo.CustomerContactPersonName}} </td>
                             </tr>
                             <tr>
                                 <td>Designation:  {{shopInfo.CustomerContactPersonDesignation}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:  {{shopInfo.CustomerAddress}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone:  {{shopInfo.CustomerMobileNo}}</td>
                             </tr>
                             <tr>
                                 <td>Type of Legal Entity</td>
@@ -52,10 +58,23 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>Deed  Agreement </td>
+                                <td class="checkbox-group-deed-agreement">
+                                    <span>Yes</span>
+                                    <span>No</span>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Shop Picture</td>
                                 <td class="checkbox-group">
                                     <span>Yes</span>
                                     <span>No</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Shop Location</td>
+                                <td>
+                                    {{shopInfo.ShopAddress}}
                                 </td>
                             </tr>
                             <tr>
@@ -162,14 +181,14 @@
                             </tr>
                             <tr>
                                 <td>Meta Data Information</td>
-                                <td></td>
+                                <td> {{shopInfo.ShopAddress}} -{{shopInfo.EntryDate}}</td>
                             </tr>
                             <tr >
-                                <td style="text-align: center" colspan="2"> □ I hereby declare that the information provided by the representative is true and accurate to the best of my knowledge and belief</td>
+                                <td style="text-align: center" colspan="2">☑ I hereby declare that the information provided by the representative is true and accurate to the best of my knowledge and belief</td>
                             </tr>
                             <tr>
                                 <td><strong>Comments:</strong></td>
-                                <td></td>
+                                <td>{{shopInfo.RepresentativeComment}}</td>
                             </tr>
                         </table>
                     </div>
@@ -191,7 +210,7 @@
                             <tr>
                                 <td class="signature-cell">
                                     <p style="text-align:center"><strong>Verified by</strong></p>
-                                    <p>Meta Data Information: {{shopInfo.ShopAddress}}</p>
+                                    <p>Meta Data Information: {{shopInfo.ShopAddress}} -{{shopInfo.EntryDate}}</p>
                                     <p>Name: {{shopInfo.AssignVroName}}</p>
                                     <p>Designation: <span class="underline"></span></p>
                                     <p>Date: <span class="underline"></span></p>
@@ -257,6 +276,7 @@ export default {
                 const PaymentBehaviour =  this.shopInfo.PaymentBehaviour;
                 const ModeOfPayment =  this.shopInfo.ModeOfPayment;
                 const ShopPhoto =  this.shopInfo.ShopPhoto;
+                const DeedAgreement =  this.shopInfo.DeedAgreement;
                 if(ShopPhoto) {
                     var ShopPhotoStatus = 'Yes';
                 }
@@ -282,6 +302,12 @@ export default {
                         span.classList.add('selected');
                     }
                     if (span.textContent.trim() === ShopPhotoStatus) {
+                        span.classList.add('selected');
+                    }
+                });
+                document.querySelectorAll('.checkbox-group-deed-agreement span').forEach(span => {
+                    console.log(span.textContent.trim(),DeedAgreement )
+                    if (span.textContent.trim() === DeedAgreement) {
                         span.classList.add('selected');
                     }
                 });
@@ -427,6 +453,35 @@ th, td {
     content: "□";
     font-size: 16px;
     color: #555;
+}
+.checkbox-group-deed-agreement {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin: 4px 0;
+}
+.checkbox-group-deed-agreement span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+.checkbox-group-deed-agreement span:before {
+    content: "□";
+    font-size: 16px;
+    color: #555;
+}
+.checkbox-group-deed-agreement span.selected {
+    font-weight: bold;
+    color: #0066cc;
+}
+.checkbox-group-deed-agreement span.selected:before {
+    content: "✓";
+    color: #0066cc;
 }
 .checkbox-allow-credit{
     display: flex;
