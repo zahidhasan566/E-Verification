@@ -42,6 +42,8 @@
                                     <span>Private Limited Company</span>
                                     <span>NGO</span>
                                     <span>Government Institutions</span>
+                                    <span>PLC</span>
+                                    <span>Individual</span>
                                 </td>
                             </tr>
                             <tr>
@@ -54,7 +56,6 @@
                                 <td class="checkbox-group">
                                     <span>Owned</span>
                                     <span>Rented Shop</span>
-                                    <span>No</span>
                                 </td>
                             </tr>
                             <tr>
@@ -80,11 +81,11 @@
                             <tr>
                                 <td>Reputation of the Customer in the Market</td>
                                 <td class="checkbox-group">
+                                    <span>Bad</span>
+                                    <span>Poor</span>
+                                    <span>Average</span>
                                     <span>Good</span>
-                                    <span>Medium</span>
-                                    <span>Not Good</span>
-                                    <span>Unclear</span>
-                                    <span>Moderate</span>
+                                    <span>Excellent</span>
                                 </td>
                             </tr>
 
@@ -111,22 +112,24 @@
                             <tr>
                                 <td>Payment Terms with ACI:</td>
                                 <td class="checkbox-group">
+                                    <span>30 Days</span>
                                     <span>60 Days</span>
                                     <span>90 Days</span>
                                     <span>120 Days</span>
+                                    <span>180 Days</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Payment Behavior:</td>
                                 <td class="checkbox-group">
                                     <span>Partial Payment</span>
-                                    <span>Bill to Bill Payment</span>
+                                    <span>invoice Payment</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Mode of Payment:</td>
                                 <td class="checkbox-group">
-                                    <span>Change</span>
+                                    <span>Cheque</span>
                                     <span>DD</span>
                                     <span>Cash</span>
                                 </td>
