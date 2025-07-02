@@ -48,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td >Outlet Shop Condition</td>
-                                <td class="checkbox-group">
+                                <td class="checkbox-group-outlet">
                                     <span>Poor</span>
                                     <span>Moderate</span>
                                     <span>Good</span>
@@ -177,7 +177,7 @@
                                 <td>Amount: <span style="text-align: right">{{shopInfo.BalancePerCustomer}}</span></td>
                             </tr>
                             <tr>
-                                <td rowspan="2">As per Customer proposed credit limit:</td>
+                                <td rowspan="2">Proposed Credit limit</td>
                                 <td>Amount: <span style="text-align: right">{{shopInfo.CustomerProposedCreditLimit}}</span></td>
                             </tr>
                             <tr>
@@ -312,13 +312,16 @@ export default {
                     if (span.textContent.trim() === ShopPhotoStatus) {
                         span.classList.add('selected');
                     }
-                    if (span.textContent.trim() === Condition) {
-                        span.classList.add('selected');
-                    }
                 });
                 document.querySelectorAll('.checkbox-group-deed-agreement span').forEach(span => {
                     console.log(span.textContent.trim(),DeedAgreement )
                     if (span.textContent.trim() === DeedAgreement) {
+                        span.classList.add('selected');
+                    }
+                });
+                document.querySelectorAll('.checkbox-group-outlet span').forEach(span => {
+                    console.log(span.textContent.trim(),Condition )
+                    if (span.textContent.trim() === Condition) {
                         span.classList.add('selected');
                     }
                 });
@@ -494,6 +497,38 @@ th, td {
     content: "✓";
     color: #0066cc;
 }
+
+.checkbox-group-outlet {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin: 4px 0;
+}
+checkbox-group-outlet span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+checkbox-group-outlet span:before {
+    content: "□";
+    font-size: 16px;
+    color: #555;
+}
+checkbox-group-outlet span.selected {
+    font-weight: bold;
+    color: #0066cc;
+}
+checkbox-group-outlet span.selected:before {
+    content: "✓";
+    color: #0066cc;
+}
+
+
 .checkbox-allow-credit{
     display: flex;
     gap: 10px;
