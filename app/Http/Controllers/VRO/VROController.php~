@@ -79,7 +79,9 @@ class VROController extends Controller
 
                 if(!empty($singleShopInfo['CustomerCode'])){
                    $checkExisting =  ShopInformation::where('CustomerCode', $singleShopInfo['CustomerCode'])->first();
-                   if($checkExisting->CustomerCode == $singleShopInfo['CustomerCode']){
+
+
+                   if( !empty($checkExisting->CustomerCode) && $checkExisting->CustomerCode == $singleShopInfo['CustomerCode']){
                        return response()->json([
                           'status' => 'error',
                           'message' => 'Customer code already exist!',
@@ -289,6 +291,7 @@ class VROController extends Controller
                         if(!empty($results[0])){
                             $existingShopInformation = $results[0];
                         }
+                        dd($existingShopInformation->ContactPerson );
 
                         DB::beginTransaction();
                         // Create a new record for each field
@@ -387,7 +390,6 @@ class VROController extends Controller
             }
             }
     }
-
     public function getVroAssignList(){
         $vroCustomerList = AssignedVro::select('CustomerCode','AssignedVro.Business','Business.BusinessName')
             ->join('Business', 'Business.Business', '=', 'AssignedVro.Business')
