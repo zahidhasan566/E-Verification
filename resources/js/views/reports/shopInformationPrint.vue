@@ -26,7 +26,7 @@
                                 <td>Name: {{shopInfo.CustomerContactPersonName}} </td>
                             </tr>
                             <tr>
-                                <td>Designation:  {{shopInfo.CustomerContactPersonDesignation}}</td>
+                                <td>Designation:  {{shopInfo.ContactPersonDesignation}}</td>
                             </tr>
                             <tr>
                                 <td>Address:  {{shopInfo.CustomerAddress}}</td>
@@ -173,10 +173,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td >Balance As Per Customer (for extension):</td>
+                                <td>Amount: <span style="text-align: right">{{shopInfo.BalancePerCustomer}}</span></td>
                             </tr>
                             <tr>
-                                <td rowspan="2">As per Customer proposed credit limit:</td>
+                                <td rowspan="2">Proposed Credit limit</td>
                                 <td>Amount: <span style="text-align: right">{{shopInfo.CustomerProposedCreditLimit}}</span></td>
                             </tr>
                             <tr>
@@ -273,15 +274,19 @@ export default {
                 this.shopInfo = response.data
 
                 const typeOfEntity =  this.shopInfo.TypeOfEntity;
-                const OwnerShip =  this.shopInfo.OwnerShip;
+                var OwnerShip =  this.shopInfo.OwnerShip;
                 const CustomerReputation =  this.shopInfo.CustomerReputation;
                 const PaymentTermsInDays =  this.shopInfo.PaymentTermsInDays;
                 const PaymentBehaviour =  this.shopInfo.PaymentBehaviour;
                 const ModeOfPayment =  this.shopInfo.ModeOfPayment;
                 const ShopPhoto =  this.shopInfo.ShopPhoto;
                 const DeedAgreement =  this.shopInfo.DeedAgreement;
+                const Condition =  this.shopInfo.Condition;
                 if(ShopPhoto) {
                     var ShopPhotoStatus = 'Yes';
+                }
+                if(OwnerShip ==='Rented') {
+                    OwnerShip = 'Rented Shop';
                 }
 
                 // Find and mark the selected option
@@ -305,6 +310,9 @@ export default {
                         span.classList.add('selected');
                     }
                     if (span.textContent.trim() === ShopPhotoStatus) {
+                        span.classList.add('selected');
+                    }
+                    if (span.textContent.trim() === Condition) {
                         span.classList.add('selected');
                     }
                 });
