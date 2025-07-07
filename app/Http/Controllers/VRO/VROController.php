@@ -78,7 +78,7 @@ class VROController extends Controller
                 && !empty($singleShopInfo['RepresentativeComment'])
             ){
 
-                if (Route::currentRouteName() === 'shop-edit-information' && !empty($singleShopInfo['ShopId'])) {
+                if (!empty($singleShopInfo['ShopId'])) {
                     $updateShopInfo  = $this->updateExistingShop($singleShopInfo);
                     return $updateShopInfo;
                 }
@@ -259,7 +259,6 @@ class VROController extends Controller
         if(!empty($shopID)){
             $shop = ShopInformation::where('ShopID', $shopID)->first();
             if($shop){
-//                ShopInformation::where('ShopID', $shopID)->delete();
                 BusinessWithACI::where('ShopID', $shopID)->delete();
                 CompetitorShopBusiness::where('ShopID', $shopID)->delete();
 
