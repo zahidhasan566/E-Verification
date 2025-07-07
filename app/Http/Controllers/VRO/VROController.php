@@ -13,6 +13,7 @@ use App\Services\ImageBase64Service;
 use Carbon\Carbon;
 use Faker\Provider\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -77,6 +78,11 @@ class VROController extends Controller
                 && !empty($singleShopInfo['RepresentativeComment'])
             ){
 
+                if (Route::currentRouteName() === 'shop-edit-information' && !empty($singleShopInfo['ShopId'])) {
+                    $updateShopInfo  = $this->updateExistingShop($singleShopInfo);
+                    return $updateShopInfo;
+                }
+
                 if(!empty($singleShopInfo['CustomerCode'])){
                    $checkExisting =  ShopInformation::where('CustomerCode', $singleShopInfo['CustomerCode'])->first();
 
@@ -89,13 +95,6 @@ class VROController extends Controller
                    }
 
                 }
-
-                if(!empty($singleShopInfo['ShopId'])){
-                    $updateShopInfo  = $this->updateExistingShop($singleShopInfo);
-                    return $updateShopInfo;
-
-                }
-                else{
                     DB::beginTransaction();
                     //BussinessWise Customer Information
                     $db = BusinessConnection::getConnectionName($singleShopInfo['Business']);
@@ -185,7 +184,7 @@ class VROController extends Controller
                     DB::commit();
 
                     return response()->json(['status' => 'Success','message' => 'Shop Information created successfully!', 'Data' => $shop->ShopID], 201);
-                }
+
 
             }
             else{

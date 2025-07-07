@@ -50,7 +50,7 @@ Route::group(['middleware' => ['jwt:api']], function () {
         Route::post('get-business-customerCode-wise-information',[\App\Http\Controllers\VRO\VROController::class,'getBusinessWiseCustomerInformation']);
         Route::post('store-shop-information',[\App\Http\Controllers\VRO\VROController::class,'storeShopInformation']);
         Route::get('show-shop-information',[\App\Http\Controllers\VRO\VROController::class,'getExistingShop']);
-        Route::post('shop-edit-information',[\App\Http\Controllers\VRO\VROController::class,'updateExistingShop']);
+        Route::post('shop-edit-information',[\App\Http\Controllers\VRO\VROController::class,'storeShopInformation']);
         Route::post('assigned-vro-list',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'index']);
         Route::get('sample-file-assigned-vro-list',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'getDemoExcelFile']);
         Route::post('store-assigned-vro',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'storeVro']);
@@ -59,7 +59,8 @@ Route::group(['middleware' => ['jwt:api']], function () {
 
 
     Route::group(['prefix' => 'reports'],function () {
-        Route::post('all-shop-information',[\App\Http\Controllers\Admin\Reports\ReportController::class,'getShopInformation']);
+        Route::post('all-shop-information',[\App\Http\Controllers\Admin\Reports\ReportController::class,'getAllShopInformation']);
+        Route::get('get-shop-information/{shopId}',[\App\Http\Controllers\Admin\Reports\ReportController::class,'getSingleShopInformation']);
 
     });
 
