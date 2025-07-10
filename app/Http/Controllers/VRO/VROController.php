@@ -75,7 +75,6 @@ class VROController extends Controller
                 && !empty($singleShopInfo['PaymentTermsInDays'])
                 && !empty($singleShopInfo['BalancePerCustomer'])
                 && !empty($singleShopInfo['CustomerProposedCreditLimit'])
-                && !empty($singleShopInfo['SBU'])
                 && !empty($singleShopInfo['RepresentativeComment'])
             ){
 
@@ -279,7 +278,6 @@ class VROController extends Controller
                         && !empty($singleShopInfo['YearlyPurchasePotential'])
                         && !empty($singleShopInfo['PaymentTermsInDays'])
                         && !empty($singleShopInfo['BalancePerCustomer'])
-                        && !empty($singleShopInfo['SBU'])
                         && !empty($singleShopInfo['CustomerProposedCreditLimit'])
                         && !empty($singleShopInfo['RepresentativeComment'])
                     ){
