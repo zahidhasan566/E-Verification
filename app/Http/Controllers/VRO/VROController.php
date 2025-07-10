@@ -75,6 +75,7 @@ class VROController extends Controller
                 && !empty($singleShopInfo['PaymentTermsInDays'])
                 && !empty($singleShopInfo['BalancePerCustomer'])
                 && !empty($singleShopInfo['CustomerProposedCreditLimit'])
+                && !empty($singleShopInfo['SBU'])
                 && !empty($singleShopInfo['RepresentativeComment'])
             ){
 
@@ -139,6 +140,7 @@ class VROController extends Controller
                     $shop->PaymentTermsInDays = $singleShopInfo['PaymentTermsInDays'] ?? null;
                     $shop->CustomerProposedCreditLimit = $singleShopInfo['CustomerProposedCreditLimit'] ?? null;
                     $shop->RepresentativeComment = $singleShopInfo['RepresentativeComment'] ?? null;
+                    $shop->SBU = $singleShopInfo['SBU'] ?? null;
 
                     $shop->RepresentativePhoto = $singleShopInfo['RepresentativePhoto'] ? ImageBase64Service::uploadBase64Image($singleShopInfo['RepresentativePhoto'], public_path('uploads/'),'RepresentativePhoto'): null;
                     $shop->BalancePerCustomer = $singleShopInfo['BalancePerCustomer'] ?? null;
@@ -277,6 +279,7 @@ class VROController extends Controller
                         && !empty($singleShopInfo['YearlyPurchasePotential'])
                         && !empty($singleShopInfo['PaymentTermsInDays'])
                         && !empty($singleShopInfo['BalancePerCustomer'])
+                        && !empty($singleShopInfo['SBU'])
                         && !empty($singleShopInfo['CustomerProposedCreditLimit'])
                         && !empty($singleShopInfo['RepresentativeComment'])
                     ){
@@ -311,7 +314,7 @@ class VROController extends Controller
                             $shopUpdate->Latitude = $singleShopInfo['Latitude'] ?? null;
                             $shopUpdate->Longitude = $singleShopInfo['Longitude'] ?? null;
                             $shopUpdate->ShopAddress = $singleShopInfo['ShopAddress'] ?? null;
-
+                            $shop->SBU = $singleShopInfo['SBU'] ?? null;
                             $shopUpdate->ShopPhoto = $singleShopInfo['ShopPhoto'] ? ImageBase64Service::uploadBase64Image($singleShopInfo['ShopPhoto'], public_path('uploads/'),'ShopPhoto'): $shopUpdate->ShopPhoto;
                             $shopUpdate->CustomerReputation = $singleShopInfo['CustomerReputation'] ?? null;
                             $shopUpdate->PaymentBehaviour = $singleShopInfo['PaymentBehaviour'] ?? null;
