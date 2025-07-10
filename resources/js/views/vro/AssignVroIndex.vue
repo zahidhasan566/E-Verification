@@ -10,7 +10,7 @@
     </div>
     <advanced-datatable :options="tableOptions">
       <template slot="action" slot-scope="row">
-        <a href="javascript:" @click="addUserModal(row.item)"> <i class="ti-pencil-alt">Edit</i></a>
+          <button class="btn-danger" @click="deleteVRO(row.item.AssignedVroID)"><i class="fas fa-trash"><span >Delete</span></i></button>
 <!--        <a href="javascript:" @click="changePassword(row.item.UserID)"> <i class="ti-lock"></i></a>-->
       </template>
     </advanced-datatable>
@@ -30,12 +30,12 @@ export default {
       tableOptions: {
         source: 'vro/assigned-vro-list',
         search: true,
-        slots: [],
+        slots: [8],
         hideColumn: ['RoleID','UserID'],
-        slotsName: [],
+        slotsName: ['action'],
         sortable: [2],
         pages: [20, 50, 100],
-        addHeader: []
+        addHeader: ['Action']
       },
       loading: false,
       cpLoading: false
@@ -62,16 +62,33 @@ export default {
         bus.$emit('edit-password', row);
       })
     },
-    deleteDept(id) {
-      this.deleteAlert(() => {
-        this.axiosDelete('users', id, (response) => {
-          this.successNoti(response.message);
-          this.$store.commit('departmentDelete', id);
-          bus.$emit('refresh-datatable');
-        }, (error) => {
-          this.errorNoti(error);
+    deleteVRO(AssignedVroID) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                let  submitUrl = 'vro/delete-vro';
+                this.axiosPost(submitUrl, {
+                    AssignedVroID: AssignedVroID,
+                }, (response) => {
+                    Swal.fire(
+                         'Delete !',
+                        'Your file has been Deleted',
+                        'success'
+                    )
+                    bus.$emit('refresh-datatable');
+                }, (error) => {
+                    this.errorNoti(error);
+                })
+            }
         })
-      });
     },
     exportData() {
       bus.$emit('export-data','assign-vro-list-'+moment().format('YYYY-MM-DD'))

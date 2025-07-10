@@ -55,6 +55,7 @@ Route::group(['middleware' => ['jwt:api']], function () {
         Route::get('sample-file-assigned-vro-list',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'getDemoExcelFile']);
         Route::post('store-assigned-vro',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'storeVro']);
         Route::get('get-vro-assign-list',[\App\Http\Controllers\VRO\VROController::class,'getVroAssignList']);
+        Route::post('delete-vro',[\App\Http\Controllers\Admin\AdminVRO\AdminVroController::class,'deleteVRO']);
     });
 
 

@@ -37,6 +37,7 @@ class ReportController extends Controller
             'ShopInformation.TypeOfEntity',
             'ShopInformation.CustomerName',
             'ShopInformation.CustomerCode',
+            'ShopInformation.SBU',
             'ShopInformation.CustomerContactPersonName',
             'ShopInformation.CustomerContactPersonDesignation',
             'ShopInformation.CustomerProprietorName',

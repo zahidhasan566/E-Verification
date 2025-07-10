@@ -90,4 +90,13 @@ class AdminVroController extends Controller
         }
 
     }
+
+    public function deleteVRO(Request $request){
+        $assignedVro = AssignedVro::find($request->AssignedVroID);
+        $assignedVro->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data deleted successfully!'
+        ],200);
+    }
 }

@@ -508,22 +508,22 @@ th, td {
     background-color: #f9f9f9;
     margin: 4px 0;
 }
-checkbox-group-outlet span {
+.checkbox-group-outlet span {
     display: flex;
     align-items: center;
     gap: 4px;
     white-space: nowrap;
 }
-checkbox-group-outlet span:before {
+.checkbox-group-outlet span:before {
     content: "□";
     font-size: 16px;
     color: #555;
 }
-checkbox-group-outlet span.selected {
+.checkbox-group-outlet span.selected {
     font-weight: bold;
     color: #0066cc;
 }
-checkbox-group-outlet span.selected:before {
+.checkbox-group-outlet span.selected:before {
     content: "✓";
     color: #0066cc;
 }
