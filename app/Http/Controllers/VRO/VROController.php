@@ -91,7 +91,7 @@ class VROController extends Controller
                        return response()->json([
                           'status' => 'error',
                           'message' => 'Customer code already exist!',
-                       ]);
+                       ],405);
                    }
 
                 }
