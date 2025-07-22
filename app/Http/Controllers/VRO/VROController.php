@@ -390,9 +390,13 @@ class VROController extends Controller
             }
     }
     public function getVroAssignList(){
-        $vroCustomerList = AssignedVro::select('CustomerCode','AssignedVro.Business','Business.BusinessName')
+        $vroCustomerList = AssignedVro::select('AssignedVro.CustomerCode', 'AssignedVro.Business', 'Business.BusinessName')
             ->join('Business', 'Business.Business', '=', 'AssignedVro.Business')
-            ->where('AssignedVROStaffId',Auth::user()->UserID)->get();
+            ->leftJoin('ShopInformation', 'ShopInformation.CustomerCode', '=', 'AssignedVro.CustomerCode')
+            ->whereNull('ShopInformation.CustomerCode')
+            ->where('AssignedVROStaffId', Auth::user()->UserID)
+            ->get();
+
 
         if(empty($vroCustomerList[0]->CustomerCode)){
             return response()->json([
