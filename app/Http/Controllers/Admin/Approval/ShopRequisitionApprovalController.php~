@@ -25,7 +25,6 @@ class ShopRequisitionApprovalController extends Controller
                         'ShopInformation.TypeOfEntity',
                         'ShopInformation.CustomerName',
                         'ShopInformation.CustomerCode',
-                        'ShopInformation.CustomerProprietorName',
                         'ShopInformation.CustomerMobileNo',
                         'ShopInformation.CustomerAddress',
                         'ShopInformation.OwnerShip',
@@ -45,8 +44,10 @@ class ShopRequisitionApprovalController extends Controller
                         )->where(function ($q) use ($search) {
                             $q->where('Name', 'like', '%' . $search . '%');
                             $q->orWhere('ShopID', 'like', '%' . $search . '%');
+                            $q->orWhere('CustomerCode', 'like', '%' . $search . '%');
                         })
-                        ->join('Users', 'Users.UserID', '=', 'ShopInformation.AssignVROStaffId');
+                        ->join('Users', 'Users.UserID', '=', 'ShopInformation.AssignVROStaffId')
+                        ->OrderBy('ShopInformation.ShopID', 'desc');
 
 
         if ($request->type === 'export') {

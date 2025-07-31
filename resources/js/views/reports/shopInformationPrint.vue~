@@ -140,11 +140,7 @@
                             </tr>
                             <tr>
                                 <td>Business with other SBU of ACI</td>
-                                <td class="checkbox-group">
-                                    <span>CC & PII</span>
-                                    <span>Seed</span>
-                                    <span>Fertilizer</span>
-                                </td>
+                                <td>{{shopInfo.SBU}}</td>
                             </tr>
                             <tr>
                                 <td>Credit Status with other SBU of ACI</td>

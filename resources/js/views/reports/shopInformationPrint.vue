@@ -23,7 +23,7 @@
                             </tr>
                             <tr>
                                 <td rowspan="4">Person Contacted</td>
-                                <td>Name: {{shopInfo.CustomerContactPersonName}} </td>
+                                <td>Name: {{shopInfo.ContactPersonName}} </td>
                             </tr>
                             <tr>
                                 <td>Designation:  {{shopInfo.ContactPersonDesignation}}</td>

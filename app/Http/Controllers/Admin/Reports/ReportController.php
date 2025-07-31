@@ -33,6 +33,7 @@ class ReportController extends Controller
             'Users.Name as AssignVroName',
             'ShopInformation.Business',
             'ShopInformation.ContactPersonDesignation',
+            'ShopInformation.ContactPersonName',
             'ShopInformation.ProprietorName',
             'ShopInformation.TypeOfEntity',
             'ShopInformation.CustomerName',
