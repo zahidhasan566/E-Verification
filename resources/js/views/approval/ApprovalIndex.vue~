@@ -15,8 +15,8 @@
                     <button type="button" style="padding: 2px 5px" @click="approvalShopReq(row.item.ShopID,'N')" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Reject</button>
                     </span>
                     <span v-else>
-                        <span style="background: #00a55d;color: white" v-if="row.item.ApproveStatus == 'Y'">Approved</span>
-                        <span style="background: red;color: white" v-else>Rejected</span>
+                        <span style="background: #00a55d;color: white; padding: 5px 5px;border-radius: 10px;" v-if="row.item.ApproveStatus == 'Y'">Approved</span>
+                        <span style="background: red;color: white;padding: 5px 5px;border-radius: 10px;" v-else>Rejected</span>
                     </span>
 
 
@@ -41,7 +41,7 @@ export default {
       tableOptions: {
         source: 'approval/shop-list',
         search: true,
-        slots: [27],
+        slots: [25],
         hideColumn: ['ApproveStatus'],
         slotsName: ['action'],
         sortable: [2],

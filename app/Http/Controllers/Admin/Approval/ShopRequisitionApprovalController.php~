@@ -25,6 +25,7 @@ class ShopRequisitionApprovalController extends Controller
                         'ShopInformation.TypeOfEntity',
                         'ShopInformation.CustomerName',
                         'ShopInformation.CustomerCode',
+                        'ShopInformation.CustomerProprietorName',
                         'ShopInformation.CustomerMobileNo',
                         'ShopInformation.CustomerAddress',
                         'ShopInformation.OwnerShip',

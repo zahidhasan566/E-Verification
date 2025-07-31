@@ -41,7 +41,7 @@ export default {
       tableOptions: {
         source: 'approval/shop-list',
         search: true,
-        slots: [27],
+        slots: [24],
         hideColumn: ['ApproveStatus'],
         slotsName: ['action'],
         sortable: [2],

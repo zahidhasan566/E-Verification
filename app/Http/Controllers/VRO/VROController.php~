@@ -120,6 +120,7 @@ class VROController extends Controller
                     $shop->CustomerContactPersonName = $existingShopInformation->ContactPerson ?? null;
                     $shop->CustomerContactPersonDesignation = $singleShopInfo['CustomerContactPersonDesignation'] ?? null;
                     $shop->CustomerProprietorName = $singleShopInfo['CustomerProprietorName'] ?? null;
+                    $shop->ContactPersonName = $singleShopInfo['ContactPersonName'] ?? null;
                     $shop->CustomerMobileNo = $existingShopInformation->Mobile ?? null;
                     $shop->CustomerMobileNoTwo = $existingShopInformation->Mobile ?? null;
                     $shop->CustomerAddress = $existingShopInformation->Add1 ?? null;
@@ -302,6 +303,7 @@ class VROController extends Controller
                             $shopUpdate->CustomerContactPersonName = $existingShopInformation->ContactPerson ?? null;
                             $shopUpdate->CustomerContactPersonDesignation = $singleShopInfo['CustomerContactPersonDesignation'] ?? null;
                             $shopUpdate->CustomerProprietorName = $singleShopInfo['CustomerProprietorName'] ?? null;
+                            $shopUpdate->ContactPersonName = $singleShopInfo['ContactPersonName'] ?? null;
                             $shopUpdate->CustomerMobileNo = $existingShopInformation->Mobile ?? null;
                             $shopUpdate->CustomerMobileNoTwo = $existingShopInformation->Mobile ?? null;
                             $shopUpdate->CustomerAddress = $existingShopInformation->Add1 ?? null;
